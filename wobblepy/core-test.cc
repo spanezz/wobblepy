@@ -1,7 +1,7 @@
 #include "core.h"
 #include "methods.h"
 
-extern "C" {
+namespace {
 
 struct run_internal_tests : public wobblepy::MethNoargs<run_internal_tests, PyObject>
 {
@@ -18,6 +18,11 @@ struct run_internal_tests : public wobblepy::MethNoargs<run_internal_tests, PyOb
 };
 
 wobblepy::Methods<run_internal_tests> methods;
+
+}
+
+
+extern "C" {
 
 static PyModuleDef wobblepy_module = {
     PyModuleDef_HEAD_INIT,
