@@ -14,11 +14,3 @@ add_definitions(${OPT_FLAGS})
 Python3_add_library(wobblepy MODULE ${WOBBLEPY_SOURCES})
 
 configure_file(wobblepy-test.py wobblepy-test.py COPYONLY)
-
-add_test(wobblepy-test wobblepy-test.py)
-
-
-# add_executable(wobblepy-test ${WOBBLEPY_SOURCES})
-# target_link_libraries(wobblepy-test ${Python3_LIBRARIES})
-
-# add_dependencies(check wobblepy-test)
