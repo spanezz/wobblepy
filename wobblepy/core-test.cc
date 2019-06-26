@@ -1,17 +1,30 @@
 #include "core.h"
+#include "methods.h"
 
 extern "C" {
 
-static PyMethodDef wobblepy_methods[] = {
-    { nullptr, nullptr, 0, nullptr }
+struct run_internal_tests : public wobblepy::MethNoargs<run_internal_tests, PyObject>
+{
+    constexpr static const char* name = "run_internal_tests";
+    constexpr static const char* signature = "";
+    constexpr static const char* returns = "None";
+    constexpr static const char* summary = "run internal wobblepy tests";
+    constexpr static const char* doc = nullptr;
+
+    static PyObject* run(Impl* self)
+    {
+        Py_RETURN_NONE;
+    }
 };
+
+wobblepy::Methods<run_internal_tests> methods;
 
 static PyModuleDef wobblepy_module = {
     PyModuleDef_HEAD_INIT,
     "wobblepy",       /* m_name */
     "Test module for wobblepy.",  /* m_doc */
     -1,                /* m_size */
-    wobblepy_methods,  /* m_methods */
+    methods.as_py(),  /* m_methods */
     NULL,              /* m_slots */
     NULL,              /* m_traverse */
     NULL,              /* m_clear */

@@ -90,6 +90,7 @@ struct ReleaseGIL
     }
 };
 
+
 /**
  * Exception raised when a python function returns an error with an exception
  * set.
@@ -103,6 +104,20 @@ struct ReleaseGIL
  */
 struct PythonException : public std::exception {};
 
+
+/**
+ * Throw PythonException if the given pointer is nullptr.
+ *
+ * This can be used to wrap Python API invocations, throwing PythonException if
+ * the API call returned an error.
+ */
+template<typename T>
+inline T* throw_ifnull(T* o)
+{
+    if (!o) throw PythonException();
+    return o;
 }
+
+} // wobblepy
 
 #endif
