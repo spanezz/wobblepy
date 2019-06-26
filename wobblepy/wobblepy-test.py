@@ -11,6 +11,14 @@ class TestWobblepy(unittest.TestCase):
 
 run internal wobblepy tests""")
 
+    def test_object(self):
+        cls = wobblepy.TestObject
+        self.assertEqual(cls.__doc__, "\nTest object for wobblepy python helpers\n")
+
+        obj = cls()
+        self.assertEqual(str(obj), "TestObject")
+        self.assertEqual(repr(obj), "TestObject object")
+
 
 def main():
     return unittest.main()
