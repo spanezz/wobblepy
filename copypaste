@@ -19,9 +19,11 @@ class Copypaste:
             ns_components = self.namespace.split("::")
             ns_open = "".join("namespace {} {{\n".format(x) for x in ns_components).encode("utf-8")
             ns_close = "".join("\n}" for x in range(len(ns_components))).encode("utf-8")
+            dest_includepath = ("#include <" + "/".join(ns_components) + "/").encode()
 
         # Replace namespace and const names
         if self.namespace:
+            buf = buf.replace(b"#include <wobblepy/", dest_includepath)
             buf = buf.replace(b"namespace wobblepy {\n", ns_open)
             buf = buf.replace(b"\n} // wobblepy", ns_close)
             buf = buf.replace(b"wobblepy", dest_namespace)
