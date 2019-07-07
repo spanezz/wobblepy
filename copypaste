@@ -19,7 +19,7 @@ class Copypaste:
             ns_components = self.namespace.split("::")
             ns_open = "".join("namespace {} {{\n".format(x) for x in ns_components).encode("utf-8")
             ns_close = "".join("\n}" for x in range(len(ns_components))).encode("utf-8")
-            dest_includepath = ("#include <" + "/".join(ns_components) + "/").encode()
+            dest_includepath = ("#include <" + self.subdir + "/").encode()
 
         # Replace namespace and const names
         if self.namespace:
