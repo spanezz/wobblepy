@@ -19,6 +19,9 @@ them in your sources. Since the API is stable, you can occasionally refresh
 your sources just by copying. Please contribute your fixes to wobblepy code
 back to wobblepy, with unit tests.
 
+Note that wobblepy defines `PY_SSIZE_T_CLEAN` before importing `Python.h`,
+which may break existing python code that does not, when mixed with wobblepy.:
+see <https://bugs.python.org/issue37465> for details.
 
 To run wobblepy's unit tests:
 

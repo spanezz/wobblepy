@@ -62,7 +62,7 @@ PyObject* double_to_python(double val)
 
 std::vector<std::string> stringlist_from_python(PyObject* o)
 {
-    pyo_unique_ptr iter(PyObject_GetIter(o));
+    pyo_unique_ptr iter(throw_ifnull(PyObject_GetIter(o)));
 
     std::vector<std::string> res;
     while (pyo_unique_ptr item = PyIter_Next(iter))
