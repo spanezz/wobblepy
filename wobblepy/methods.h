@@ -1,5 +1,5 @@
-#ifndef WOBBLEPY_MODULE_H
-#define WOBBLEPY_MODULE_H
+#ifndef WOBBLEPY_METHODS_H
+#define WOBBLEPY_METHODS_H
 
 #include "core.h"
 #include <array>
