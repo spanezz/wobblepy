@@ -33,7 +33,8 @@ struct GetSetters
 {
     typedef std::array<PyGetSetDef, sizeof...(GETSETTERS) + 1> Data;
     Data m_data;
-    GetSetters() : m_data({GETSETTERS::def()..., {nullptr}})
+    GetSetters()
+        : m_data({GETSETTERS::def()..., {nullptr, nullptr, nullptr, nullptr, nullptr}})
     {
     }
 
@@ -195,7 +196,7 @@ struct Type
             0,                         // tp_getattr
             0,                         // tp_setattr
             0,                         // tp_reserved
-            (reprfunc)Child::_repr,  // tp_repr
+            (reprfunc)Child::_repr,    // tp_repr
             0,                         // tp_as_number
             tp_as_sequence,            // tp_as_sequence
             tp_as_mapping,             // tp_as_mapping
@@ -206,7 +207,7 @@ struct Type
             0,                         // tp_setattro
             0,                         // tp_as_buffer
             tp_flags,                  // tp_flags
-            Child::doc,              // tp_doc
+            Child::doc,                // tp_doc
             0,                         // tp_traverse
             0,                         // tp_clear
             (richcmpfunc)Child::_richcompare, // tp_richcompare
@@ -221,9 +222,19 @@ struct Type
             0,                         // tp_descr_get
             0,                         // tp_descr_set
             0,                         // tp_dictoffset
-            (initproc)Child::_init,  // tp_init
+            (initproc)Child::_init,    // tp_init
             0,                         // tp_alloc
             PyType_GenericNew,         // tp_new
+            0,                         // tp_free
+            0,                         // tp_is_gc
+            0,                         // tp_bases
+            0,                         // tp_mro
+            0,                         // tp_cache
+            0,                         // tp_subclasses
+            0,                         // tp_weaklist
+            0,                         // tp_del
+            0,                         // tp_version_tag
+            0,                         // tp_finalize
         };
 
         if (PyType_Ready(type) != 0)
