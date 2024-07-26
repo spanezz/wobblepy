@@ -10,7 +10,7 @@ The repository has these rules:
    'WOBBLEPY' and 'wobblepy', so that the code can be deployed to fit as part
    of another library.
  - APIs are stable. Also ABIs, whenever possible.
- - code only depends on C++11 standard library features and the Python 3 C API
+ - code only depends on C++17 standard library features and the Python 3 C API
  - it must be easier to maintain wobblepy code than it is to manage
    dependencies on an ecosystem of libraries that provide the same funtionality
 
