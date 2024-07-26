@@ -5,6 +5,7 @@
 #include <Python.h>
 #include <stdexcept>
 #include <string>
+#include <filesystem>
 #include <vector>
 #include "core.h"
 
@@ -32,6 +33,14 @@ template<> inline std::string from_python<std::string>(PyObject* o) { return str
 /// Convert a python string to an utf8 string
 const char* cstring_from_python(PyObject* o);
 template<> inline const char* from_python<const char*>(PyObject* o) { return cstring_from_python(o); }
+
+/// Convert a path to a python pathlib.Path object
+PyObject* path_to_python(const std::filesystem::path& path);
+inline PyObject* to_python(const std::filesystem::path& path) { return path_to_python(path); }
+
+/// Convert a python string or Path to a path
+std::filesystem::path path_from_python(PyObject* o);
+template<> inline std::filesystem::path from_python<std::filesystem::path>(PyObject* o) { return path_from_python(o); }
 
 /// Convert a buffer of data to python bytes
 PyObject* bytes_to_python(const std::vector<uint8_t>& buffer);
