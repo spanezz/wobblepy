@@ -2,13 +2,13 @@
 #define WOBBLEPY_DICT_H
 
 #define PY_SSIZE_T_CLEAN
-#include <Python.h>
 #include "core.h"
 #include "values.h"
+#include <Python.h>
 
 namespace wobblepy {
 
-template<typename T>
+template <typename T>
 inline void set_dict(PyObject* dict, const char* key, const T& val)
 {
     auto pyval = to_python(val);
@@ -28,7 +28,6 @@ inline void set_dict(PyObject* dict, const char* key, pyo_unique_ptr& val)
         throw PythonException();
 }
 
-
-} // wobblepy
+} // namespace wobblepy
 
 #endif

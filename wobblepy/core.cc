@@ -2,4 +2,4 @@
 
 namespace wobblepy {
 
-} // wobblepy
+} // namespace wobblepy
