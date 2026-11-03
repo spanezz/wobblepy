@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-3-Clause
+
 #include "core.h"
 #include "methods.h"
 #include "type.h"

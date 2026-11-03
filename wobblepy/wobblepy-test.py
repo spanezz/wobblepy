@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+
+# SPDX-License-Identifier: BSD-3-Clause
+
 import wobblepy
 import unittest
 

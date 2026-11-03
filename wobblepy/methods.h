@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: BSD-3-Clause
+
 #ifndef WOBBLEPY_METHODS_H
 #define WOBBLEPY_METHODS_H
 
