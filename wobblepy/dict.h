@@ -1,10 +1,8 @@
 #ifndef WOBBLEPY_DICT_H
 #define WOBBLEPY_DICT_H
 
-#define PY_SSIZE_T_CLEAN
 #include "core.h"
 #include "values.h"
-#include <Python.h>
 
 namespace wobblepy {
 
