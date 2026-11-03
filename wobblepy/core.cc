@@ -5,7 +5,9 @@ namespace wobblepy {
 const char* PythonException::what() const noexcept
 {
     AcquireGIL gil;
-    PyErr_FormatUnraisable("Python exception caught from C++");
+    // TODO: use PyErr_FormatUnraisable from Python 3.13
+    fprintf(stderr, "Python exception caught from C++\n");
+    PyErr_WriteUnraisable(nullptr);
     return "Python exception caught from C++";
 }
 
